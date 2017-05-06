@@ -1,6 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose = require("mongoose");
+var mongoose = require("mongoose");
 ;
 exports.TopicSchema = new mongoose.Schema({
     creator: mongoose.Schema.Types.ObjectId,
