@@ -1,1 +1,21 @@
-<h1>Hello Angular 2</h1>
+<div id="login_content">
+    <h1> Üdvözlünk a fórumon </h1>
+    <p>
+        A projekt célja egy olyan szerepjáték fórum létrehozása, melyben bárki hozhat létre kalandot, illetve vehet részt benne.<br>
+        A szabályok jórészt a Dungeons & Dragons ötödik kiadásának szabálykönyvére támaszkodnak, ahol változtatás van, ott lesz
+        erre vonatkozóan figyelmeztetés. 
+    </p>
+    <div class="input_holder">
+      <input [(ngModel)]="username" type="text" class="username" placeholder="Felhasználónév"><br>
+    </div>
+   <div class="input_holder">
+      <input [(ngModel)]="password" type="password" class="password" placeholder="Jelszó"><br>
+    </div>
+    <div class="input_holder">
+      <input class="button" type="submit" (click)="sendLoginData()"><br>
+    </div>
+    <div class="link_holder">
+        <a class="link" (click)="redirectToRegister()">Regisztráció</a>
+        <a class="link" (click)="redirectToLostpw()">Elfelejtett jelszó</a>
+    </div>
+</div>

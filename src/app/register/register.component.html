@@ -1,0 +1,27 @@
+<div id="login_content">
+    <h1>Regisztráció</h1>
+    <p>
+        Ahhoz, hogy a fórum tagja légy és kalandozni kezdhess, csak egy e-mail címre lesz szükséged.
+    </p>
+    <div class="input_holder">
+      <input [(ngModel)]="email" class="email" type="email" placeholder="E-mail cím"><br>
+    </div>
+    <div class="input_holder">
+      <input [(ngModel)]="email2" class="email" type="email" placeholder="E-mail cím mégegyszer"><br>
+    </div>
+    <div class="input_holder">
+      <input [(ngModel)]="username" class="username" type="text" placeholder="Felhasználónév"><br>
+    </div>
+   <div class="input_holder">
+      <input [(ngModel)]="password" class="password" type="password" placeholder="Jelszó"><br>
+    </div>
+    <div class="input_holder">
+      <input [(ngModel)]="password2" class="password" type="password" placeholder="Jelszó mégegyszer"><br>
+    </div>
+    <div class="input_holder">
+      <input class="button" type="submit" placeholder="Regisztráció" (click)="sendRegisterData()"><br>
+    </div>
+    <div class="link_holder">
+        <a class="link" (click)="redirectToLogin()">Bejelentkezés</a>
+    </div>
+</div>

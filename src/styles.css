@@ -1,5 +1,72 @@
+body {
+  margin: 0;
+  background: #00ff00 url("bg1.jpg") no-repeat fixed center;
+}
 h1 {
-  color: #369;
+  text-align: center;
+  color: #17c;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
+}
+
+#login_content {
+  width: 50%;
+  margin: 10% auto;
+  display: block;
+  background-color: #E6E6FA;
+  border-radius: 10px;
+  padding: 10px; 
+}
+
+#login_content p {
+  text-align: center;
+  font-family: Helvetica;
+}
+
+
+input {
+  box-sizing: border-box;
+  border-style:solid;
+  border-color: #bbb;
+  padding:10px;
+}
+input:focus{
+  border-color: #3399FF;
+  outline: none;
+}
+
+.input_holder{
+  padding: 7px 0;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.link_holder{
+  padding: 7px 0;
+  margin: 0 auto;
+  width: 220px;
+  text-align: center;
+
+}
+
+.button{
+  color: white;
+  background-color: #3399FF;
+  width: 193px;
+  border: none;
+
+}
+
+.button:hover {
+    background-color: #17c;
+}
+
+.link{
+  color: #3399FF;
+  text-decoration: underline;
+  padding: 0 7px 0 7px;
+}
+
+.link:hover{
+  cursor: pointer;
 }
