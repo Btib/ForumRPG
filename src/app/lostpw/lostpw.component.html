@@ -1,0 +1,13 @@
+<div id="login_content">
+    <h1> Elfelejtett jelszó </h1>
+    <p>
+        Amennyiben nem emlékszel a jelszavadra, add meg az e-mail címed. (WIP)
+    </p>
+    <div class="input_holder">
+      <input [(ngModel)]="email" class="email" type="email" placeholder="E-mail cím"><br>
+    </div>
+    <div class="link_holder">
+        <a class="link" (click)="redirectToRegister()">Regisztráció</a>
+        <a class="link" (click)="redirectToLogin()">Bejelentkezés</a>
+    </div>
+</div>

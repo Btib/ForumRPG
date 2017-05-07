@@ -18,7 +18,17 @@ export class LoginComponent  {
     this.router.navigate(['/register']);
   }
 
+  redirectToLostpw(){
+    this.router.navigate(['/lostpw']);
+  }
+
+
   sendLoginData(){
+    if(this.username == undefined || this.username == ""|| this.password == undefined || this.password == ""){
+      alert("Kérem írja be a felhasználónevet/jelszót!");
+      return false;
+    } 
     console.log(this.username + " " + this.password);
+    this.router.navigate(['/home']);
   }
 }

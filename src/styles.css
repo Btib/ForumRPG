@@ -1,6 +1,18 @@
+/*----------------------------------Global------------------------------------*/
 body {
   margin: 0;
-  background: #00ff00 url("bg1.jpg") no-repeat fixed center;
+  background: white url("bg1.jpg") no-repeat fixed center;
+}
+
+input {
+  box-sizing: border-box;
+  border-style:solid;
+  border-color: #bbb;
+  padding:10px;
+}
+input:focus{
+  border-color: #3399FF;
+  outline: none;
 }
 h1 {
   text-align: center;
@@ -8,6 +20,8 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
+
+/*----------------------Login/Register/Lostpw----------------------------*/
 
 #login_content {
   width: 50%;
@@ -21,18 +35,6 @@ h1 {
 #login_content p {
   text-align: center;
   font-family: Helvetica;
-}
-
-
-input {
-  box-sizing: border-box;
-  border-style:solid;
-  border-color: #bbb;
-  padding:10px;
-}
-input:focus{
-  border-color: #3399FF;
-  outline: none;
 }
 
 .input_holder{
@@ -69,4 +71,67 @@ input:focus{
 
 .link:hover{
   cursor: pointer;
+}
+
+/*------------------------------------Home----------------------------------------------*/
+
+#menu_bar{
+  background-color: #3399FF;
+  width: 100%;
+}
+
+#menu_bar div {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#menu_bar div img{
+  width: 4%;
+  padding: 10px;
+}
+
+#menu_bar div div{
+    display: inline-block;
+    position: relative;
+    width: 90%;
+    font-size: 0;
+    padding: 0;
+    text-align: left;	
+}
+
+#menu_bar div div div {
+    color: white;
+    list-style: none;
+    text-align: center;
+    text-decoration: none;
+	  font-size: 20px;
+    line-height: 84px;
+  	display: inline-block;
+  	padding: 0px 15px;
+    margin: 0;
+    width: 22%;
+}
+
+#menu_bar div div div:hover {
+    background: #17c;
+    cursor: pointer;
+}
+
+#page_content{
+  background-color: #E6E6FA;
+  width: 80%;
+  margin: 0 auto;
+}
+#main_bar div div{
+  display: inline-block;
+  padding: 20px;
+}
+#main_bar > div {
+  display: inline-block;
+  width: 48%;
+}
+
+
+#main_bar div div:hover{
+  background-color: #8A8A96;
 }
