@@ -2,6 +2,7 @@
 body {
   margin: 0;
   background: white url("bg1.jpg") no-repeat fixed center;
+  background-size: cover;
 }
 
 input {
@@ -80,7 +81,7 @@ h1 {
   width: 100%;
 }
 
-#menu_bar div {
+#menu_bar > div {
   width: 80%;
   margin: 0 auto;
 }
@@ -122,16 +123,43 @@ h1 {
   width: 80%;
   margin: 0 auto;
 }
-#main_bar div div{
+#main_bar > div div{
   display: inline-block;
+  cursor: pointer;
   padding: 20px;
 }
 #main_bar > div {
   display: inline-block;
+  font-size: 16px;
   width: 48%;
 }
 
+#newAdventurePopup{
+  width: 30%;
+  background-color: #692715;
+  margin: 5% 25%;
+  position: fixed;
+}
 
-#main_bar div div:hover{
+#main_bar > div div:hover{
   background-color: #8A8A96;
+}
+.threadHeader {
+  background-color: #8A8A96;
+  min-height: 90px;
+  cursor: pointer;
+}
+.threadHeader > div{
+  line-height: 50px;
+  display: inline-block;
+}
+
+.threadHeader div div{
+  line-height: 46px;
+  display: inline-block;
+}
+
+.bgimage{
+  background: url("lock.png") no-repeat;
+  background-size: cover;
 }

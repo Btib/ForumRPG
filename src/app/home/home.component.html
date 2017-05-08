@@ -1,21 +1,42 @@
 <div id="menu_bar">
     <div>
-        <img src="favicon.ico" alt="">
+        <img src="favicon.ico" style="float:left;"alt="">
         <div>
             <div>Kalandok</div>
             <div>Karakterek</div>
             <div>Profil</div>
-            <div>Kijelentkezés</div>
+            <div (click)="initiateLogout()">Kijelentkezés</div>
         </div>
     </div>  
 </div>
 <div id="page_content">
+    <div *ngIf="newAdventureShow" id="newAdventurePopup">
+        <h1>Új kaland létrehozása</h1>
+        <div class="input_holder">
+            <input [(ngModel)]="adventureTitle" type="text" placeholder="Kaland címe"><br>
+        </div>
+        <div class="input_holder">
+            <input [(ngModel)]="partySize" type="number" placeholder="Max létszám"><br>
+        </div>
+        <div class="input_holder">
+            <input [(ngModel)]="minLvl" type="number" placeholder="Min szint"><br>
+        </div>
+        <div class="input_holder">
+            <input [(ngModel)]="maxLvl" type="number" placeholder="Max szint"><br>
+        </div>
+        <div class="input_holder" style="width:100%;display:inline-block;">
+            <div style="width:70%;margin:0 auto;">
+                <input value="Mégse" class="button" type="submit" (click)="closeNewAdv()">
+                <input value="Rajta!" class="button" type="submit" (click)="confirmNewAdventure()">
+            </div>
+        </div>
+    </div>
     <div id="main_bar">
         <div>
             <div>
                 Kaland Napló
             </div>
-            <div>
+            <div (click)="showNewAdventurePopup()">
                 Új kaland
             </div>
         </div>
@@ -23,12 +44,18 @@
             Üdvözlünk a fórumunkon! ha új játékos vagy, mindenképp készíts egy karaktert, mielőtt belevágnál a játékba!
         </div>
     </div>
-    <div>
-        <div>
-
+    <div class="threadHeader">
+        <div stlye="font-size:0;">
+            <div class="bgimage" style="width: 156px; float:left;min-height:150px;">
+            </div>       
+            <div style="text-align: center; font-size: 20px; min-width:900px; ">
+                <p>Szeszlér szeszkazánja</p>
+                <p>Létszám:<span>5/5</span>,<span>Szint: 5-10</span></p>                 
+            </div>
         </div>
-        <div>
-
+        <div style="text-align: center; font-size: 20px; width: 28%; line-height: 45px;">
+             <p>Létrehozva:<span>Testuser</span></p> 
+              <p>hozzászólások száma:<span>4</span></p> 
         </div>
     </div>    
 </div>
