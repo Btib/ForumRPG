@@ -40,6 +40,6 @@ export class RegisterComponent  {
         }, error => {
             console.log(error);
         });
-  
+        this.redirectToLogin();
   }
 }
