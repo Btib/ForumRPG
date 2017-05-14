@@ -29,11 +29,11 @@ export class HomeComponent  {
           },
           //this.router.navigate(['/login']);
           error => console.log(error)
-      );
+    );
   }
 
-  redirectToThread(){
-     this.router.navigate(['/thread']);
+  redirectToThread(/*id:string*/){
+     this.router.navigate(['/thread'/*,id*/]);
   }
 
   initiateLogout(){
@@ -62,7 +62,13 @@ export class HomeComponent  {
       alert("Kérlek add meg az összes infót!");
       return false;
     } 
-    console.log(this.adventureTitle + " " + this.partySize + " " + this.minLvl + " " + this.maxLvl);
+    this._homeService.addNewAdventure(this.adventureTitle, this.partySize, this.minLvl, this.maxLvl, this.description).subscribe(
+          response => {
+            this.resp = response;
+            alert('Új kaland létrehozva!');
+          },
+          error => console.log(error)
+      );
     this.closeNewAdv();
   }
 

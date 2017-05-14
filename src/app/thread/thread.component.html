@@ -13,11 +13,13 @@
     <div class="main_post post" style="border: 1px solid #8A8A96">
        <div style="width:20%;"  style="float:left;">
             <span>Dungeon master:</span> <br>
+            <!--{{resp.mainpost.owner}}-->
             <span>Testuser</span><br>
             <p>Szint: <span>16</span></p>
             <div class="divbutt" (click)="attemptJoin()">Csatlakozás</div>
        </div>
        <div style="width:73%; margin:0 0 0 80px;">
+           <!--{{resp.mainpost.description}}-->
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porta neque, ac dapibus elit. Aenean id quam convallis, maximus dui vitae, euismod dui. Vestibulum vulputate eros eu ligula pretium porta quis venenatis dui. Fusce eu pulvinar nisl. Ut luctus dolor sapien, a sagittis neque bibendum in. Nunc facilisis egestas felis nec rhoncus. Curabitur blandit arcu tortor, egestas viverra ipsum eleifend in. Maecenas at mi nec lorem euismod consectetur id sed mi. Maecenas efficitur, enim quis consectetur ullamcorper, quam elit porttitor arcu, vitae condimentum velit ipsum sit amet ante.
 
 Mauris posuere sed lacus scelerisque dictum. Aenean eu pharetra urna. Pellentesque sagittis lacus sit amet justo consequat vulputate. Donec sapien est, facilisis id lacinia accumsan, bibendum sit amet turpis. Morbi posuere consectetur faucibus. Etiam rutrum condimentum placerat. Vivamus dignissim malesuada elit at mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi at lorem eu urna luctus venenatis. Quisque elementum pellentesque sem, ac posuere ipsum fermentum a. Donec placerat nunc sed venenatis mollis. Praesent non ex faucibus, lobortis erat a, euismod ex. Pellentesque vehicula tellus tincidunt sem euismod, non molestie tellus vehicula. Fusce commodo faucibus justo a feugiat.
@@ -49,14 +51,20 @@ Donec sit amet neque semper risus aliquam rhoncus convallis in quam. In hac habi
             </div>
         </div>
     </div>
+    <!--*ngFor post in resp -->
     <div class="post" style="min-height: 200px;">
          <div style="width:20%;"  style="float:left;">
+             <!-- {{post.creator}} -->
             <span>Testuser</span><br>
+             <!-- {{post.usrlevel}} -->
             <p>Szint: <span>16</span></p>
+             <!--(click)="postDelete({{post.id}})" -->
+             <!--(click)="showModify({{post.id}})" -->
             <div class="divbutt_red" (click)="postDelete()">Post törlése</div>
             <div class="divbutt_blu" (click)="showModify()">Post módosítása</div>
        </div>
        <div style="width:70%">
+           <!--{{post.text}}" -->
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porta neque, ac dapibus elit. Aenean id quam convallis, maximus dui vitae, euismod dui. Vestibulum vulputate eros eu ligula pretium porta quis venenatis dui. Fusce eu pulvinar nisl. Ut luctus dolor sapien, a sagittis neque bibendum in. Nunc facilisis egestas felis nec rhoncus. Curabitur blandit arcu tortor, egestas viverra ipsum eleifend in. Maecenas at mi nec lorem euismod consectetur id sed mi. Maecenas efficitur, enim quis consectetur ullamcorper, quam elit porttitor arcu, vitae condimentum velit ipsum sit amet ante.
        </div>
     </div>

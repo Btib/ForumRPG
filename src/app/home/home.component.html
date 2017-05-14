@@ -47,17 +47,23 @@
             Üdvözlünk a fórumunkon! ha új játékos vagy, mindenképp készíts egy karaktert, mielőtt belevágnál a játékba!
         </div>
     </div>
-    <div class="threadHeader" (click)="redirectToThread()">
+    <!--*ngFor thread in resp -->
+    <!--(click)="redirectToThread({{thread.id}})" -->
+    <div  class="threadHeader" (click)="redirectToThread()">
         <div stlye="font-size:0;">
             <div class="bgimage" style="width: 156px; float:left;min-height:150px;">
             </div>       
             <div style="text-align: center; font-size: 20px; min-width:900px; ">
+                <!--{{thread.title}}-->
                 <p>Szeszlér szeszkazánja</p>
+                <!--{{thread.maxcount}} ||||| {{thread.minlevel}} - {{thread.maxlevel}}-->
                 <p>Létszám:<span>5/5</span>,<span>Szint: 5-10</span></p>                 
             </div>
         </div>
         <div style="text-align: center; font-size: 20px; width: 28%; line-height: 45px;">
+            <!--{{thread.creator}}-->
              <p>Létrehozva: <span>Testuser</span></p> 
+             <!--{{thread.postcount}}-->
               <p>hozzászólások száma: <span>4</span></p> 
         </div>
     </div>    

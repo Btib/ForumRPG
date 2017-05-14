@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ThreadService } from './thread.service'; 
 
 @Component({
   moduleId: module.id,
   selector: 'thread',
   templateUrl: `thread.component.html`,
 })
-export class ThreadComponent  { 
+export class ThreadComponent { 
     numberOfPosts: number;
     owner: string;
     ownerLevel: number;
@@ -17,13 +18,27 @@ export class ThreadComponent  {
     newPostShow: boolean;
     modifyPostShow: boolean;
     postText: string;
+    resp: any;
+    id: string;
+    postid:string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private _threadService:ThreadService, private route: ActivatedRoute) {
       this.newPostShow = false;
       this.modifyPostShow = false;
-
   }
-  
+  ngOnInit(){
+      this._threadService.getPosts().subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+          },
+          //this.router.navigate(['/login']);
+          error => console.log(error)
+      );
+      /*
+      this.route.params
+      .subscribe((params) => this.id = params['id']);*/
+  }
   attemptJoin(){
     if(this.currentParty < this.maxParty){
 
@@ -34,7 +49,8 @@ export class ThreadComponent  {
   showNewPost(){
     this.newPostShow = true;
   }
-  showModify(){
+  showModify(/*id:string*/){
+    //this.postid = id;
     this.modifyPostShow = true; 
   }
   closeNewPost(){
@@ -50,6 +66,7 @@ export class ThreadComponent  {
           alert("Kérlek írj valamit!");
           return false;
       }
+      this._threadService.modifyPost(this.postid, this.id, this.postText);
       this.closeModify();
   }
   confirmNewPost(){
@@ -57,11 +74,11 @@ export class ThreadComponent  {
           alert("Kérlek írj valamit!");
           return false;
       }
-      //TODO feldolgozás
+      this._threadService.addPost(this.id, this.postText);
       this.closeNewPost();
   }
-  postDelete(){
-
+  postDelete(/*id:string*/){
+      //this.postid = id;
+      this._threadService.deletePost(this.postid);
   }
-
 }
