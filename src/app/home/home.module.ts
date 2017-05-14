@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
-import { NewAdvModule } from './popup/newAdv/newAdv.module';
-
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule],
