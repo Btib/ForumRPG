@@ -2,7 +2,7 @@
     <div>
         <img src="favicon.ico" style="float:left;"alt="">
         <div>
-            <div>Kalandok</div>
+            <div (click)="redirectToHome()">Kalandok</div>
             <div>Karakterek</div>
             <div>Profil</div>
             <div (click)="initiateLogout()">Kijelentkezés</div>
@@ -70,5 +70,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porta neque
     </div>
     <div>
         <div class="closing" (click)="showNewPost()">Új hozzászólás</div>
+         <div class="closing" (click)="finishAdventure()">Kaland vége</div>
     </div>
 </div>

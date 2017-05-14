@@ -26,6 +26,9 @@ export class ThreadComponent {
       this.newPostShow = false;
       this.modifyPostShow = false;
   }
+  redirectToHome(){
+    this.router.navigate(['/home']); 
+  }
   ngOnInit(){
       this._threadService.getPosts().subscribe(
           response => {
@@ -39,11 +42,28 @@ export class ThreadComponent {
       this.route.params
       .subscribe((params) => this.id = params['id']);*/
   }
+    initiateLogout(){
+    this._threadService.logMeOut().subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+            this.router.navigate(['/login']);
+          },
+          error => console.log(error)
+      );
+  }
   attemptJoin(){
     if(this.currentParty < this.maxParty){
-
+        this._threadService.joinThread(this.id).subscribe(
+          response => {
+            this.resp = response;
+            alert("Csatlakozva!");
+            console.log(this.resp);
+          },
+          error => console.log(error)
+      );
     } else {
-        alert("Nem tudsz csatlakozni, már betelt!")
+        alert("Nem tudsz csatlakozni, már betelt!");
     }
   }
   showNewPost(){
@@ -66,7 +86,13 @@ export class ThreadComponent {
           alert("Kérlek írj valamit!");
           return false;
       }
-      this._threadService.modifyPost(this.postid, this.id, this.postText);
+      this._threadService.modifyPost(this.postid, this.id, this.postText).subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+          },
+          error => console.log(error)
+      );
       this.closeModify();
   }
   confirmNewPost(){
@@ -74,11 +100,33 @@ export class ThreadComponent {
           alert("Kérlek írj valamit!");
           return false;
       }
-      this._threadService.addPost(this.id, this.postText);
+      this._threadService.addPost(this.id, this.postText).subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+          },
+          error => console.log(error)
+      );
       this.closeNewPost();
   }
   postDelete(/*id:string*/){
       //this.postid = id;
-      this._threadService.deletePost(this.postid);
+      this._threadService.deletePost(this.postid).subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+          },
+          error => console.log(error)
+      );
+  }
+  finishAdventure(){
+    this._threadService.finishAdventure(this.id).subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+            this.router.navigate(['/home']);
+          },
+          error => console.log(error)
+      );;
   }
 }

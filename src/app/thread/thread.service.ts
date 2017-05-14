@@ -38,4 +38,14 @@ export class ThreadService {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post('http://localhost:5000/rest/post/new', 'threadid=' + threadid + '&text=' + text,{headers: headers});
     }
+    joinThread(threadid:string){
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post('http://localhost:5000/rest/thread/join', 'threadid=' + threadid ,{headers: headers});
+    }
+    finishAdventure(threadid:string){
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post('http://localhost:5000/rest/thread/finish', 'threadid=' + threadid ,{headers: headers});
+    }
 }

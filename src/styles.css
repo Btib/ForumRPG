@@ -136,7 +136,8 @@ h1 {
 
 #newAdventurePopup{
   width: 30%;
-  background-color: #692715;
+  border: 1px solid #8A8A96;
+  background-color: #A5E0CB;
   margin: 5% 25%;
   position: fixed;
 }
@@ -179,6 +180,7 @@ h1 {
 
 .divbutt{
   margin-top: 80%;
+  color:white;
   cursor: pointer;
   padding: 20px;
   background-color: #4CC297;
@@ -189,6 +191,7 @@ h1 {
 }
 
 .divbutt_red{
+  color:white;
   margin-top: 10%;
   cursor: pointer;
   padding: 20px;
@@ -213,13 +216,15 @@ h1 {
 
 #newPostPopup{
   width: 30%;
-  background-color: #692715;
+  background-color: #A5E0CB;
   margin: 0 25%;
   position: fixed;
 }
 .closing{
+  color: white;
+  display: inline-block;
   padding: 10px 0;
-  width: 50%; 
+  width: 30%; 
   background-color: #3399FF; 
   cursor: pointer;
   margin:0 auto;
