@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HomeService } from './home.service'; 
 
 @Component({
   moduleId: module.id,
@@ -14,9 +15,21 @@ export class HomeComponent  {
   minLvl: number;
   maxLvl: number;
   description: string;
+  resp: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private _homeService: HomeService) {
     this.newAdventureShow = false;
+  }
+
+  ngOnInit() {
+    this._homeService.getThreads().subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+          },
+          //this.router.navigate(['/login']);
+          error => console.log(error)
+      );
   }
 
   redirectToThread(){
@@ -24,7 +37,14 @@ export class HomeComponent  {
   }
 
   initiateLogout(){
-    this.router.navigate(['/login']);
+    this._homeService.logMeOut().subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+            this.router.navigate(['/login']);
+          },
+          error => console.log(error)
+      );
   }
 
   closeNewAdv(){
