@@ -4,15 +4,13 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { RegisterComponent } from './register.component';
-import { RegisterService } from './register.service';
+import { ThreadComponent } from './thread.component';
 
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule],
-  declarations: [ RegisterComponent ],
-  bootstrap:    [ RegisterComponent ],
-  providers: [ RegisterService]
+  declarations: [ ThreadComponent ],
+  bootstrap:    [ ThreadComponent ]
 })
 
-export class RegisterModule { }
+export class ThreadModule { }

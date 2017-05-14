@@ -13,9 +13,14 @@ export class HomeComponent  {
   partySize: number;
   minLvl: number;
   maxLvl: number;
+  description: string;
 
   constructor(private router: Router) {
     this.newAdventureShow = false;
+  }
+
+  redirectToThread(){
+     this.router.navigate(['/thread']);
   }
 
   initiateLogout(){
@@ -33,7 +38,7 @@ export class HomeComponent  {
     this.newAdventureShow = true;
   }
   confirmNewAdventure(){
-    if(this.adventureTitle == undefined || this.adventureTitle == ""|| this.partySize == undefined || this.partySize < 1 ||  this.minLvl == undefined || this.minLvl < 1 || this.maxLvl == undefined || this.maxLvl < 1 ){
+    if(this.adventureTitle == undefined || this.adventureTitle == ""|| this.description == undefined || this.description == ""|| this.partySize == undefined || this.partySize < 1 ||  this.minLvl == undefined || this.minLvl < 1 || this.maxLvl == undefined || this.maxLvl < 1 ){
       alert("Kérlek add meg az összes infót!");
       return false;
     } 

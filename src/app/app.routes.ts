@@ -7,6 +7,7 @@ import { LoginRoutes } from './login/login.route';
 import { RegisterRoutes } from './register/register.route';
 import { LostpwRoutes } from './lostpw/lostpw.route';
 import { HomeRoutes } from './home/home.route';
+import { ThreadRoutes } from './thread/thread.route';
 
 
 export const appRoutes: Routes = [
@@ -14,5 +15,6 @@ export const appRoutes: Routes = [
      ...RegisterRoutes,
      ...LostpwRoutes,
      ...HomeRoutes,
+     ...ThreadRoutes,
      { path: '**',     component: LoginComponent }
 ];
