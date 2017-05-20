@@ -160,6 +160,9 @@ export class ThreadComponent implements OnInit {
             this.router.navigate(['/home']);
           },
           error => console.log(error)
-      );;
+      );
+  }
+  deleteProfile(id:string){
+    
   }
 }
