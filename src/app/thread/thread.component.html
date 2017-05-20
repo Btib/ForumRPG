@@ -13,7 +13,7 @@
     <div class="main_post post" style="border: 1px solid #8A8A96; min-height: 300px;">
        <div style="width:20%;"  style="float:left;">
             <span>Dungeon master:</span> <br>
-            <span *ngIf="thread">{{thread.creator.username}}</span><br>
+            <span *ngIf="thread" style="cursor: pointer" (click)="showProfile(thread.creator._id)">{{thread.creator.username}}</span><br>
             <p>Szint: <span *ngIf="thread">{{thread.creator.character.level}}</span></p>
             <div class="divbutt" (click)="attemptJoin()">Csatlakozás</div>
        </div>
@@ -33,6 +33,16 @@
             </div>
         </div>
     </div>
+    <div *ngIf="profileShow" id="newPostPopup">
+        <h1 *ngIf="actualUser">{{actualUser.username}} profilja</h1>
+        <h1 *ngIf="actualUser">{{actualUser.character.level}}. szintű</h1>
+        <div class="input_holder" style="width:100%;display:inline-block;">
+            <div style="width:70%;margin:0 auto;">
+                <input value="Mégse" class="button" type="submit" (click)="closeProfile()">
+                <input value="Kitiltás" class="button" type="submit" (click)="deleteProfile()">
+            </div>
+        </div>
+    </div>
      <div *ngIf="modifyPostShow" id="newPostPopup">
         <h1>Hozzászólás módosítása</h1>
         <div class="input_holder" style="width:400px">
@@ -45,15 +55,12 @@
             </div>
         </div>
     </div>
-    <!--*ngFor post in resp -->
     <div *ngFor="let post of posts" class="post" style="min-height: 200px;">
          <div  style="width:20%;"  style="float:left;">
-            <span >{{post.creator.username}}</span><br>
+            <span style="cursor: pointer" (click)="showProfile(post.creator._id)">{{post.creator.username}}</span><br>
             <p>Szint: <span>{{post.creator.character.level}}</span></p>
-             <!--(click)="postDelete({{post.id}})" -->
-             <!--(click)="showModify({{post.id}})" -->
-            <div class="divbutt_red" (click)="postDelete(post.id)">Post törlése</div>
-            <div class="divbutt_blu" (click)="showModify(post.id)">Post módosítása</div>
+            <div class="divbutt_red" (click)="postDelete(post._id)">Post törlése</div>
+            <div class="divbutt_blu" (click)="showModify(post._id)">Post módosítása</div>
        </div>
        <div style="width:70%">
            {{post.text}}

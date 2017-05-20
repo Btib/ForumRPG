@@ -17,7 +17,9 @@ export class ThreadComponent implements OnInit {
     currentParty: number;
     newPostShow: boolean;
     modifyPostShow: boolean;
+    profileShow: boolean;
     postText: string;
+    actualUser: any;
     resp: any;
     posts: any;
     thread: any;
@@ -27,6 +29,7 @@ export class ThreadComponent implements OnInit {
   constructor(private router: Router, private _threadService:ThreadService, private route: ActivatedRoute) {
       this.newPostShow = false;
       this.modifyPostShow = false;
+      this.profileShow = false;
   }
   redirectToHome(){
     this.router.navigate(['/home']); 
@@ -58,7 +61,7 @@ export class ThreadComponent implements OnInit {
           }
       );
   }
-    initiateLogout(){
+  initiateLogout(){
     this._threadService.logMeOut().subscribe(
           response => {
             this.resp = response;
@@ -67,6 +70,19 @@ export class ThreadComponent implements OnInit {
           },
           error => console.log(error)
       );
+  }
+  showProfile(id:string){
+    this.profileShow = true;
+    this._threadService.getUser(id).subscribe(
+          response => {
+            this.actualUser = response;
+            console.log(this.actualUser);
+          },
+          error => console.log(error)
+      );
+  }
+  closeProfile(){
+    this.profileShow = false;   
   }
   attemptJoin(){
     if(this.currentParty < this.maxParty){
@@ -127,6 +143,7 @@ export class ThreadComponent implements OnInit {
   }
   postDelete(id:string){
       this.postid = id;
+      console.log(this.postid);
       this._threadService.deletePost(this.postid).subscribe(
           response => {
             this.resp = response;

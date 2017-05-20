@@ -22,18 +22,17 @@ export class ThreadService {
     logMeOut(){
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this._http.post('http://localhost:5000/rest/user/logout',new RequestOptions({headers: headers, withCredentials: true}));
+        return this._http.post('http://localhost:5000/rest/user/logout',"",new RequestOptions({headers: headers, withCredentials: true}));
+    }
+    getUser(userid:string){
+          var headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post('http://localhost:5000/rest/user/getuser',"userid=" + userid,new RequestOptions({headers: headers, withCredentials: true})).map(res => res.json());
     }
     deletePost(postid:string){
-        var body = 'postid=' + postid;
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        var options = new RequestOptions({
-            headers: headers,
-            body : body,
-            withCredentials: true
-        });
-        return this._http.delete('http://localhost:5000/rest/post/del',options);
+        return this._http.post('http://localhost:5000/rest/post/del','postid=' + postid, new RequestOptions({headers: headers, withCredentials: true}) );
     }
     modifyPost(postid:string, threadid:string,text:string){
         var headers = new Headers();
