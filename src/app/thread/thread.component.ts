@@ -19,6 +19,7 @@ export class ThreadComponent implements OnInit {
     modifyPostShow: boolean;
     postText: string;
     resp: any;
+    posts: any;
     thread: any;
     id: string;
     postid:string;
@@ -34,20 +35,22 @@ export class ThreadComponent implements OnInit {
       this.route.params
       .subscribe((params) => this.id = params['id']);
       console.log(this.id);
-     /* this._threadService.getCurrentThread(this.id).subscribe(
+      this._threadService.getCurrentThread(this.id).subscribe(
           response => {
             this.thread = response;
-            console.log(this.resp);
+            this.maxParty = this.thread.maxcount;
+            this.currentParty = this.thread.partcount;
+            console.log(this.thread);
           },
           error => {
             this.router.navigate(['/login']);
             console.log(error);
           }
-      );*/
+      );
       this._threadService.getPosts(this.id).subscribe(
           response => {
-            this.resp = response;
-            console.log(this.resp);
+            console.log(response);
+            this.posts = response;
           },
           error => {
             this.router.navigate(['/login']);
@@ -82,8 +85,8 @@ export class ThreadComponent implements OnInit {
   showNewPost(){
     this.newPostShow = true;
   }
-  showModify(/*id:string*/){
-    //this.postid = id;
+  showModify(id:string){
+    this.postid = id;
     this.modifyPostShow = true; 
   }
   closeNewPost(){
@@ -122,8 +125,8 @@ export class ThreadComponent implements OnInit {
       );
       this.closeNewPost();
   }
-  postDelete(/*id:string*/){
-      //this.postid = id;
+  postDelete(id:string){
+      this.postid = id;
       this._threadService.deletePost(this.postid).subscribe(
           response => {
             this.resp = response;
