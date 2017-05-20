@@ -8,7 +8,7 @@ import { HomeService } from './home.service';
   selector: 'home',
   templateUrl: `home.component.html`,
 })
-export class HomeComponent  { 
+export class HomeComponent implements OnInit { 
   newAdventureShow: boolean;
   adventureTitle: string;
   partySize: number;
@@ -27,13 +27,15 @@ export class HomeComponent  {
             this.resp = response;
             console.log(this.resp);
           },
-          //this.router.navigate(['/login']);
-          error => console.log(error)
+          error => {
+            this.router.navigate(['/login']);
+            console.log(error)
+          }        
     );
   }
 
-  redirectToThread(/*id:string*/){
-     this.router.navigate(['/thread'/*,id*/]);
+  redirectToThread(id:string){
+     this.router.navigate(['/thread', id]);
   }
 
   initiateLogout(){
@@ -62,6 +64,10 @@ export class HomeComponent  {
       alert("Kérlek add meg az összes infót!");
       return false;
     } 
+    if (this.minLvl> this.maxLvl){
+      alert("Min/max szint nem jó!");
+      return false;
+    }
     this._homeService.addNewAdventure(this.adventureTitle, this.partySize, this.minLvl, this.maxLvl, this.description).subscribe(
           response => {
             this.resp = response;

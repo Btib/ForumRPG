@@ -49,22 +49,22 @@
     </div>
     <!--*ngFor thread in resp -->
     <!--(click)="redirectToThread({{thread.id}})" -->
-    <div  class="threadHeader" (click)="redirectToThread()">
+    <div *ngFor="let thread of resp" class="threadHeader" (click)="redirectToThread(thread._id)">
         <div stlye="font-size:0;">
             <div class="bgimage" style="width: 156px; float:left;min-height:150px;">
             </div>       
             <div style="text-align: center; font-size: 20px; min-width:900px; ">
                 <!--{{thread.title}}-->
-                <p>Szeszlér szeszkazánja</p>
+                <p>{{thread.title}}</p>
                 <!--{{thread.maxcount}} ||||| {{thread.minlevel}} - {{thread.maxlevel}}-->
-                <p>Létszám:<span>5/5</span>,<span>Szint: 5-10</span></p>                 
+                <p>Létszám:<span>{{thread.partcount}}/{{thread.maxcount}}</span>,<span>Szint: {{thread.minlevel}}-{{thread.maxlevel}}</span></p>                 
             </div>
         </div>
         <div style="text-align: center; font-size: 20px; width: 28%; line-height: 45px;">
             <!--{{thread.creator}}-->
-             <p>Létrehozva: <span>Testuser</span></p> 
+             <p>Létrehozva: <span>{{thread.creator.username}}</span></p> 
              <!--{{thread.postcount}}-->
-              <p>hozzászólások száma: <span>4</span></p> 
+              <p>hozzászólások száma: {{thread.postcount}}</p> 
         </div>
     </div>    
 </div>

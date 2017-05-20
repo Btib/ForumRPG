@@ -8,7 +8,7 @@ import { ThreadService } from './thread.service';
   selector: 'thread',
   templateUrl: `thread.component.html`,
 })
-export class ThreadComponent { 
+export class ThreadComponent implements OnInit { 
     numberOfPosts: number;
     owner: string;
     ownerLevel: number;
@@ -19,6 +19,7 @@ export class ThreadComponent {
     modifyPostShow: boolean;
     postText: string;
     resp: any;
+    thread: any;
     id: string;
     postid:string;
 
@@ -30,17 +31,29 @@ export class ThreadComponent {
     this.router.navigate(['/home']); 
   }
   ngOnInit(){
-      this._threadService.getPosts().subscribe(
+      this.route.params
+      .subscribe((params) => this.id = params['id']);
+      console.log(this.id);
+     /* this._threadService.getCurrentThread(this.id).subscribe(
+          response => {
+            this.thread = response;
+            console.log(this.resp);
+          },
+          error => {
+            this.router.navigate(['/login']);
+            console.log(error);
+          }
+      );*/
+      this._threadService.getPosts(this.id).subscribe(
           response => {
             this.resp = response;
             console.log(this.resp);
           },
-          //this.router.navigate(['/login']);
-          error => console.log(error)
+          error => {
+            this.router.navigate(['/login']);
+            console.log(error);
+          }
       );
-      /*
-      this.route.params
-      .subscribe((params) => this.id = params['id']);*/
   }
     initiateLogout(){
     this._threadService.logMeOut().subscribe(

@@ -5,5 +5,5 @@ import { ThreadComponent } from './thread.component';
 
 export const ThreadRoutes: Routes = [
   
-  { path: 'thread', component: ThreadComponent }
+  { path: 'thread/:id', component: ThreadComponent }
 ];
