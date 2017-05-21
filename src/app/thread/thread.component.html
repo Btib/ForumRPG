@@ -4,7 +4,7 @@
         <div>
             <div (click)="redirectToHome()">Kalandok</div>
             <div>Karakterek</div>
-            <div>Profil</div>
+            <div (click)="redirectToProfile()">Profil</div>
             <div (click)="initiateLogout()">Kijelentkezés</div>
         </div>
     </div>  
@@ -55,8 +55,8 @@
             </div>
         </div>
     </div>
-    <div *ngFor="let post of posts" class="post" style="min-height: 200px;">
-         <div  style="width:20%;"  style="float:left;">
+    <div *ngFor="let post of posts" class="post" style="min-height: 220px;">
+         <div  style="width:20%;" style="float:left; clear:both;" >
             <span style="cursor: pointer" (click)="showProfile(post.creator._id)">{{post.creator.username}}</span><br>
             <p>Szint: <span>{{post.creator.character.level}}</span></p>
             <div class="divbutt_red" (click)="postDelete(post._id)">Post törlése</div>
@@ -65,8 +65,9 @@
        <div style="width:70%">
            {{post.text}}
        </div>
+       <div style="clear: both;"></div>
     </div>
-    <div>
+    <div style="width:50%; margin:0 auto;">
         <div class="closing" (click)="showNewPost()">Új hozzászólás</div>
          <div class="closing" (click)="finishAdventure()">Kaland vége</div>
     </div>

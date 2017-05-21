@@ -4,7 +4,7 @@
         <div>
             <div>Kalandok</div>
             <div>Karakterek</div>
-            <div>Profil</div>
+            <div (click)="redirectToProfile()">Profil</div>
             <div (click)="initiateLogout()">Kijelentkezés</div>
         </div>
     </div>  
@@ -28,7 +28,7 @@
             <textarea [(ngModel)]="description" placeholder="Kaland leírása..." style="width:100%;"></textarea><br>
         </div>
         <div class="input_holder" style="width:100%;display:inline-block;">
-            <div style="width:70%;margin:0 auto;">
+            <div style="width:75%;margin:0 auto;">
                 <input value="Mégse" class="button" type="submit" (click)="closeNewAdv()">
                 <input value="Rajta!" class="button" type="submit" (click)="confirmNewAdventure()">
             </div>

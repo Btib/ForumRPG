@@ -54,4 +54,9 @@ export class ThreadService {
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post('http://localhost:5000/rest/thread/finish', 'threadid=' + threadid ,new RequestOptions({headers: headers, withCredentials: true}));
     }
+    banUser(userid:string){
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post('http://localhost:5000/rest/user/del', 'userid=' + userid ,new RequestOptions({headers: headers, withCredentials: true}));
+    }
 }

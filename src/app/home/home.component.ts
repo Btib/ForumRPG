@@ -20,7 +20,9 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private _homeService: HomeService) {
     this.newAdventureShow = false;
   }
-
+  redirectToProfile(){
+    this.router.navigate(['/profile']); 
+  }
   ngOnInit() {
     this._homeService.getThreads().subscribe(
           response => {

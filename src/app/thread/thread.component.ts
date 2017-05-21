@@ -34,6 +34,9 @@ export class ThreadComponent implements OnInit {
   redirectToHome(){
     this.router.navigate(['/home']); 
   }
+  redirectToProfile(){
+    this.router.navigate(['/profile']); 
+  }
   ngOnInit(){
       this.route.params
       .subscribe((params) => this.id = params['id']);
@@ -163,6 +166,15 @@ export class ThreadComponent implements OnInit {
       );
   }
   deleteProfile(id:string){
-    
+    this._threadService.banUser(id).subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+          },
+          error =>{
+            alert("Csak admin törölhet!");
+            console.log(error)
+          } 
+      );
   }
 }

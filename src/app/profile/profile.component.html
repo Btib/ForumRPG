@@ -1,0 +1,18 @@
+<div id="menu_bar">
+    <div>
+        <img src="favicon.ico" style="float:left;"alt="">
+        <div>
+            <div (click)="redirectToHome()">Kalandok</div>
+            <div>Karakterek</div>
+            <div>Profil</div>
+            <div (click)="initiateLogout()">Kijelentkezés</div>
+        </div>
+    </div>  
+</div>
+<div class="page_content">
+    <h1 *ngIf="resp" style="margin-top: 0">Profilnév: {{resp.username}}</h1>
+    <h1 *ngIf="resp">E-mail: {{resp.email}}</h1>
+    <h1 *ngIf="resp">Karakter szintje: {{resp.character.level}}</h1>
+    <h1 *ngIf="resp">Karakter támadása: {{resp.character.attack}}</h1>
+    <h1 *ngIf="resp">Karakter védekezése: {{resp.character.defense}}</h1>
+</div>
