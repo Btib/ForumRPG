@@ -24,16 +24,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/profile']); 
   }
   ngOnInit() {
-    this._homeService.getThreads().subscribe(
-          response => {
-            this.resp = response;
-            console.log(this.resp);
-          },
-          error => {
-            this.router.navigate(['/login']);
-            console.log(error)
-          }        
-    );
+    this.getAllThreads();
   }
 
   redirectToThread(id:string){
@@ -47,10 +38,21 @@ export class HomeComponent implements OnInit {
             console.log(this.resp);
             this.router.navigate(['/login']);
           },
-          error => console.log(error)
+          error => console.log(error._body)
       );
   }
-
+  getAllThreads(){
+    this._homeService.getThreads().subscribe(
+          response => {
+            this.resp = response;
+            console.log(this.resp);
+          },
+          error => {
+            this.router.navigate(['/login']);
+            console.log(error)
+          }        
+    );
+  }
   closeNewAdv(){
     this.newAdventureShow = false;
     this.adventureTitle = undefined;
@@ -72,10 +74,11 @@ export class HomeComponent implements OnInit {
     }
     this._homeService.addNewAdventure(this.adventureTitle, this.partySize, this.minLvl, this.maxLvl, this.description).subscribe(
           response => {
-            this.resp = response;
-            alert('Új kaland létrehozva!');
+            this.getAllThreads();
           },
-          error => console.log(error)
+          error =>{
+            alert(error._body);
+          } 
       );
     this.closeNewAdv();
   }

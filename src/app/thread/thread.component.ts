@@ -40,29 +40,7 @@ export class ThreadComponent implements OnInit {
   ngOnInit(){
       this.route.params
       .subscribe((params) => this.id = params['id']);
-      console.log(this.id);
-      this._threadService.getCurrentThread(this.id).subscribe(
-          response => {
-            this.thread = response;
-            this.maxParty = this.thread.maxcount;
-            this.currentParty = this.thread.partcount;
-            console.log(this.thread);
-          },
-          error => {
-            this.router.navigate(['/login']);
-            console.log(error);
-          }
-      );
-      this._threadService.getPosts(this.id).subscribe(
-          response => {
-            console.log(response);
-            this.posts = response;
-          },
-          error => {
-            this.router.navigate(['/login']);
-            console.log(error);
-          }
-      );
+     this.getAllPosts();
   }
   initiateLogout(){
     this._threadService.logMeOut().subscribe(
@@ -81,7 +59,10 @@ export class ThreadComponent implements OnInit {
             this.actualUser = response;
             console.log(this.actualUser);
           },
-          error => console.log(error)
+          error => {
+            console.log(error)
+            alert(error._body);
+          }
       );
   }
   closeProfile(){
@@ -95,11 +76,36 @@ export class ThreadComponent implements OnInit {
             alert("Csatlakozva!");
             console.log(this.resp);
           },
-          error => console.log(error)
+          error => {
+            alert(error._body);
+          }
       );
     } else {
         alert("Nem tudsz csatlakozni, már betelt!");
     }
+  }
+  getAllPosts(){
+      this._threadService.getCurrentThread(this.id).subscribe(
+          response => {
+            this.thread = response;
+            this.maxParty = this.thread.maxcount;
+            this.currentParty = this.thread.partcount;
+          },
+          error => {
+            this.router.navigate(['/login']);
+            console.log(error);
+          }
+      );
+      this._threadService.getPosts(this.id).subscribe(
+          response => {
+            console.log(response);
+            this.posts = response;           
+          },
+          error => {
+            this.router.navigate(['/login']);
+            console.log(error);
+          }
+      );
   }
   showNewPost(){
     this.newPostShow = true;
@@ -125,8 +131,11 @@ export class ThreadComponent implements OnInit {
           response => {
             this.resp = response;
             console.log(this.resp);
+            this.getAllPosts();
           },
-          error => console.log(error)
+          error =>{
+            alert(error._body);
+          }
       );
       this.closeModify();
   }
@@ -139,8 +148,11 @@ export class ThreadComponent implements OnInit {
           response => {
             this.resp = response;
             console.log(this.resp);
+            this.getAllPosts();
           },
-          error => console.log(error)
+          error => {
+            alert(error._body);
+          }
       );
       this.closeNewPost();
   }
@@ -151,8 +163,12 @@ export class ThreadComponent implements OnInit {
           response => {
             this.resp = response;
             console.log(this.resp);
+            this.getAllPosts();
+
           },
-          error => console.log(error)
+          error => {
+            alert(error._body);
+          }
       );
   }
   finishAdventure(){
@@ -162,7 +178,9 @@ export class ThreadComponent implements OnInit {
             console.log(this.resp);
             this.router.navigate(['/home']);
           },
-          error => console.log(error)
+          error =>{
+            alert(error._body);
+          }
       );
   }
   deleteProfile(id:string){
@@ -170,9 +188,10 @@ export class ThreadComponent implements OnInit {
           response => {
             this.resp = response;
             console.log(this.resp);
+            this.router.navigate(['/home']);
           },
           error =>{
-            alert("Csak admin törölhet!");
+            alert(error._body);
             console.log(error)
           } 
       );

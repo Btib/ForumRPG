@@ -57,8 +57,9 @@
     </div>
     <div *ngFor="let post of posts" class="post" style="min-height: 220px;">
          <div  style="width:20%;" style="float:left; clear:both;" >
-            <span style="cursor: pointer" (click)="showProfile(post.creator._id)">{{post.creator.username}}</span><br>
-            <p>Szint: <span>{{post.creator.character.level}}</span></p>
+            <span *ngIf="post.creator" style="cursor: pointer" (click)="showProfile(post.creator._id)">{{post.creator.username}}</span>
+            <span *ngIf="post.creator == null">Törölt felhasználó</span><br>
+            <p>Szint: <span *ngIf="post.creator">{{post.creator.character.level}}</span></p>
             <div class="divbutt_red" (click)="postDelete(post._id)">Post törlése</div>
             <div class="divbutt_blu" (click)="showModify(post._id)">Post módosítása</div>
        </div>
